@@ -1,6 +1,17 @@
 <script>
+import {setPageTitle, setPageMetaData} from '@/seo';
+
 export default {
   name: "MembershipsView",
+  setup() {
+    setPageTitle("Membresías - Vue Seo");
+    setPageMetaData([
+      {
+        name: "description",
+        content: "Las membresías de la plataforma te ofrecen acceso completo"
+      }
+    ])
+  }
 }
 </script>
 

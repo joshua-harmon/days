@@ -1,6 +1,17 @@
 <script>
+import {setPageTitle, setPageMetaData} from '@/seo';
+
 export default {
   name: "HomeView",
+  setup() {
+    setPageTitle('Inicio - Vue Seo');
+    setPageMetaData([
+      {
+        name: "description",
+        content: "Bienvenid@ a nuestra plataforma, estamos seguros que el material te va a ayudar mucho"
+      }
+    ]);
+  }
 }
 </script>
 

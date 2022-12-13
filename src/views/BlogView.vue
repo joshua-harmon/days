@@ -1,6 +1,21 @@
 <script>
+import {setPageTitle, setPageMetaData} from '@/seo';
+
 export default {
   name: "BlogView",
+  setup() {
+    setPageTitle("Blog - Vue Seo");
+    setPageMetaData([
+      {
+        name: "description",
+        content: "Blog donde escribimos tutoriales de Vue"
+      },
+      {
+        name: "keywords",
+        content: "Tutoriales Vue"
+      }
+    ])
+  }
 }
 </script>
 
