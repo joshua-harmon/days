@@ -1,44 +1,91 @@
 <script>
 import {setPageTitle, setPageMetaData} from '@/seo';
-
 export default {
-  name: "MembershipsView",
+  name: "",
   setup() {
-    setPageTitle("Membresías - Vue Seo");
+    setPageTitle("");
     setPageMetaData([
       {
-        name: "description",
-        content: "Las membresías de la plataforma te ofrecen acceso completo"
+        name: "",
+        content: ""
       }
     ])
   }
 }
 </script>
+<script setup>
+import { reactive } from 'vue'
+
+const formData = reactive({
+  name: '',
+  email: '',
+  message: '',
+  response: ''
+})
+
+const encode = data => {
+  return Object.keys(data)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join('&')
+}
+
+const submitForm = () => {
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encode({
+      'form-name': 'feedback',
+      ...formData
+    })
+  })
+    .then(() => {
+      formData.response = '✅ Your response was successfully submitted!'
+    })
+    .catch(error => {
+      formData.response = `❌ There was an error submitting your response: ${error.message}. Please refresh to try again.`
+    })
+}
+</script>
+
 <template>
-  <section id="farEast">
-  <div class="box">
-<ul id="bookmarks">
-  <li><a href="#">moreFood</a>
-   <ul class= "sites">
-    <li><a href="https://www.youtube.com/watch?v=kcSZ22ZY8Qs&feature=youtu.be">eggsBenedict</a></li>
-    <li><a href="https://www.youtube.com/watch?v=Zg-89wuPfVc">ramen</a></li>  
-    <li><a href="https://www.youtube.com/watch?v=NmH7XzvuaAI">spcyRmen</a></li>  
-    <li><a href="https://www.youtube.com/watch?v=_SpkOoN9oiE">mkeRamen</a></li>  
-    <li><a href="https://www.youtube.com/watch?v=fT14pV6oxvI">wonton</a></li> 
-    <li><a href="https://www.youtube.com/watch?v=zdk0bF20Bj8">veganPho</a></li>  
-    <li><a href="https://www.youtube.com/watch?v=MN8Mv63BePs">tofuNdls</a></li>  
-    <li><a href="https://www.youtube.com/watch?v=zdk0bF20Bj8">veganPho</a></li>  
-    <li><a href="https://www.youtube.com/watch?v=EAp87u65snM">twoKago</a></li> 
-    <li><a href="https://www.youtube.com/watch?v=2Lgq3EOfU50">shzSauce</a></li>  
-  </ul>
- </li>
-  <li><a href="#">sushi</a>
-   <ul class= "sites">
-    <li><a href="https://www.youtube.com/results?search_query=make+sushi">sushi</a></li> 
-    <li><a href="https://www.youtube.com/watch?v=zmljfxmZTrs">moreSushi</a></li>  
-  </ul>
- </li>
- </ul>
-</div>
-</section>
+  <h1>Vue 3 + Netlify Forms</h1>
+
+  <section v-if="formData.response" class="notification">
+    <h2>{{ formData.response }}</h2>
+  </section>
+  <form v-else class="feedback-form" name="feedback" @submit.prevent>
+    <input type="hidden" name="form-name" value="feedback" />
+
+    <div class="input-wrapper">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        v-model="formData.name"
+        type="text"
+        placeholder="Your Name"
+      />
+    </div>
+
+    <div class="input-wrapper">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        v-model="formData.email"
+        type="email"
+        placeholder="yourname@domain.extension"
+      />
+    </div>
+
+    <div class="input-wrapper">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        v-model="formData.message"
+        placeholder="What would you like to share?"
+      />
+    </div>
+
+    <button type="submit" @click="submitForm">Submit</button>
+  </form>
 </template>
+
