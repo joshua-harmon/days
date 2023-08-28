@@ -1,38 +1,16 @@
 <template>
-<template>
-
   <netlify-form name='Contact' :form='form'>
     <template #default='{readonly, submitting, submitted}'>
-
       <p v-if='submitted'>Thanks for your submission</p>
-
       <input
         name='Email'
         placeholder='Email'
         v-model='form.Email'
         :readonly='readonly'>
-
       <button>
         {{ submitting ? 'Submitting' : 'Submit' }}
       </button>
-
-    </template>
   </netlify-form>
-
-</template>
-
-<script>
-
-export default {
-  data: function() {
-    form: {
-      Email: ''
-    }
-  }
-}
-
-</script>
-  
   <form name="fileForm" enctype="multipart/form-data" data-netlify="true">
   <p>
     <label>
@@ -50,3 +28,13 @@ export default {
 </form>
 <p class="result"></p>
 </template>
+<script>
+export default {
+  data: function() {
+    form: {
+      Email: ''
+    }
+  }
+}
+</script>
+  
