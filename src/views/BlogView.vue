@@ -1,3 +1,19 @@
+<script>
+import {setPageTitle, setPageMetaData} from '@/seo';
+
+export default {
+  name: "ContactView",
+  setup() {
+    setPageTitle('Contacto - Vue Seo');
+    setPageMetaData([
+      {
+        name: "description",
+        content: "¿Tienes alguna duda? ¡Contacta con nosotros!)"
+      }
+    ])
+  }
+}
+</script>
 <script setup>
 import { reactive } from 'vue'
 
