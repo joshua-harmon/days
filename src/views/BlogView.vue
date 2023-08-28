@@ -1,19 +1,3 @@
-<script>
-import {setPageTitle, setPageMetaData} from '@/seo';
-
-export default {
-  name: "ContactView",
-  setup() {
-    setPageTitle('Contacto - Vue Seo');
-    setPageMetaData([
-      {
-        name: "description",
-        content: "¿Tienes alguna duda? ¡Contacta con nosotros!)"
-      }
-    ])
-  }
-}
-</script>
 <script setup>
 import { reactive } from 'vue'
 
@@ -54,7 +38,7 @@ const submitForm = () => {
   <section v-if="formData.response" class="notification">
     <h2>{{ formData.response }}</h2>
   </section>
-  <form v-else class="feedback-form" name="feedback" @submit.prevent  data-netlify="true">
+  <form v-else class="feedback-form" name="feedback" @submit.prevent>
     <input type="hidden" name="form-name" value="feedback" />
 
     <div class="input-wrapper">
