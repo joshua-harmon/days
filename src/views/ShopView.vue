@@ -1,18 +1,4 @@
-<<script>
-import {setPageTitle, setPageMetaData} from '@/seo';
-export default {
-  name: "",
-  setup() {
-    setPageTitle("");
-    setPageMetaData([
-      {
-        name: "",
-        content: ""
-      }
-    ])
-  }
-}
-</script>
+
     <template>
     form name="simpleContactForm" method="POST" data-netlify="true" id="simple-contact-form" class="contact-form">
 <p class="form-row">
