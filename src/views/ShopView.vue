@@ -14,9 +14,11 @@ export default {
 }
 </script>
 
-
+  
+         
+<template #default='{readonly, submitting, submitted}'>
   <netlify-form name='Contact' :form='form'>
-    <template #default='{readonly, submitting, submitted}'>
+
 
       <p v-if='submitted'>Thanks for your submission</p>
 
