@@ -1,71 +1,118 @@
-<script>
-import {setPageTitle, setPageMetaData} from '@/seo';
+<script setup>
+import { reactive } from 'vue'
 
-export default {
-  name: "BlogView",
-  setup() {
-    setPageTitle("Blog - Vue Seo");
-    setPageMetaData([
-      {
-        name: "description",
-        content: "Blog donde escribimos tutoriales de Vue"
-      },
-      {
-        name: "keywords",
-        content: "Tutoriales Vue"
-      }
-    ])
-  }
+const formData = reactive({
+  name: '',
+  email: '',
+  message: '',
+  response: ''
+})
+
+const encode = data => {
+  return Object.keys(data)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join('&')
+}
+
+const submitForm = () => {
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encode({
+      'form-name': 'feedback',
+      ...formData
+    })
+  })
+    .then(() => {
+      formData.response = '✅ Your response was successfully submitted!'
+    })
+    .catch(error => {
+      formData.response = `❌ There was an error submitting your response: ${error.message}. Please refresh to try again.`
+    })
 }
 </script>
 
 <template>
-  <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-col text-center w-full mb-20">
-        <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">ROOF PARTY POLAROID</h2>
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Master Cleanse Reliac Heirloom</h1>
-        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
-      </div>
-      <div class="flex flex-wrap">
-        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Shooting Stars</h2>
-          <p class="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-          <a class="text-indigo-500 inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">The Catalyzer</h2>
-          <p class="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-          <a class="text-indigo-500 inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Neptune</h2>
-          <p class="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-          <a class="text-indigo-500 inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Melanchole</h2>
-          <p class="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-          <a class="text-indigo-500 inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-    </div>
+  <h1>Vue 3 + Netlify Forms</h1>
+
+  <section v-if="formData.response" class="notification">
+    <h2>{{ formData.response }}</h2>
   </section>
+  <form v-else class="feedback-form" name="feedback" @submit.prevent>
+    <input type="hidden" name="form-name" value="feedback" />
+
+    <div class="input-wrapper">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        v-model="formData.name"
+        type="text"
+        placeholder="Your Name"
+      />
+    </div>
+
+    <div class="input-wrapper">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        v-model="formData.email"
+        type="email"
+        placeholder="yourname@domain.extension"
+      />
+    </div>
+
+    <div class="input-wrapper">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        v-model="formData.message"
+        placeholder="What would you like to share?"
+      />
+    </div>
+
+    <button type="submit" @click="submitForm">Submit</button>
+  </form>
 </template>
+
+<style scoped>
+.feedback-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.input-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-row-gap: 5px;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.input-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.input-wrapper input,
+.input-wrapper textarea {
+  font-family: var(--primaryFont);
+}
+
+.input-wrapper input {
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.input-wrapper textarea {
+  height: 100px;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.notification {
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 20px 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+</style>
