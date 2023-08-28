@@ -1,24 +1,7 @@
-<script>
-import {setPageTitle, setPageMetaData} from '@/seo';
-export default {
-  name: "",
-  setup() {
-    setPageTitle("");
-    setPageMetaData([
-      {
-        name: "",
-        content: ""
-      }
-    ])
-  }
-}
-</script>
+<template>
 
-  
-         
-<template #default='{readonly, submitting, submitted}'>
   <netlify-form name='Contact' :form='form'>
-
+    <template #default='{readonly, submitting, submitted}'>
 
       <p v-if='submitted'>Thanks for your submission</p>
 
@@ -32,6 +15,7 @@ export default {
         {{ submitting ? 'Submitting' : 'Submit' }}
       </button>
 
+    </template>
   </netlify-form>
 
 </template>
