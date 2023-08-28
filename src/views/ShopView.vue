@@ -13,7 +13,7 @@ export default {
   }
 }
 </script>
-<template>
+
 
   <netlify-form name='Contact' :form='form'>
     <template #default='{readonly, submitting, submitted}'>
@@ -30,7 +30,6 @@ export default {
         {{ submitting ? 'Submitting' : 'Submit' }}
       </button>
 
-    </template>
   </netlify-form>
 
 </template>
