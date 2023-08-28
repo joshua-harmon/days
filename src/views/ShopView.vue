@@ -1,4 +1,20 @@
-<form name="simpleContactForm" method="POST" data-netlify="true" id="simple-contact-form" class="contact-form">
+<<script>
+import {setPageTitle, setPageMetaData} from '@/seo';
+export default {
+  name: "",
+  setup() {
+    setPageTitle("");
+    setPageMetaData([
+      {
+        name: "",
+        content: ""
+      }
+    ])
+  }
+}
+</script>
+    <template>
+    form name="simpleContactForm" method="POST" data-netlify="true" id="simple-contact-form" class="contact-form">
 <p class="form-row">
     <label id="contact-form-name-label" for="contact-form-name" class="form-label">Name</label>
     <input type="text" name="name" id="contact-form-name" aria-labelledby="contact-form-name-label" class="form-input" />
@@ -15,3 +31,4 @@
     <button type="submit" class="button">Send Message</button>
   </p>
 </form>
+</template>
