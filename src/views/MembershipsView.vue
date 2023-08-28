@@ -53,7 +53,7 @@ const submitForm = () => {
   <section v-if="formData.response" class="notification">
     <h2>{{ formData.response }}</h2>
   </section>
-  <form v-else class="feedback-form" name="feedback" @submit.prevent>
+  <form v-else class="feedback-form" name="feedback" @submit.prevent data-netlify="true" >
     <input type="hidden" name="form-name" value="feedback" />
 
     <div class="input-wrapper">
