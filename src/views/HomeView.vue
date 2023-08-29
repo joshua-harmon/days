@@ -33,17 +33,7 @@ export default {
     <h5 style = "color:brown">
     <br>CALL (520) 300-6340, nk@World-of-work-services-coop.com
     <br>Kay or Josh Harmon, 141 S. 6th Ave, Unit 42, Tucson, Az 85702 </h5>
-<form name="contact" netlify>
-  <p>
-    <label>Name <input type="text" name="name" /></label>
-  </p>
-  <p>
-    <label>Email <input type="email" name="email" /></label>
-  </p>
-  <p>
-    <button type="submit">Send</button>
-    </p>
-</form><form action="https://formsubmit.co/joshua.harmon1960@gmail.com" method="POST">
+    <form action="https://formsubmit.co/joshua.harmon1960@gmail.com" method="POST">
      <input type="text" name="name" required>
      <input type="email" name="email" required>
      <button type="submit">Send</button>
