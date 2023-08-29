@@ -42,6 +42,7 @@ export default {
   </p>
   <p>
     <button type="submit">Send</button>
+    </p>
 </form>
   </div>
 </body>
