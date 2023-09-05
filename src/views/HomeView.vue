@@ -38,7 +38,7 @@ export default {
      <input type="email" name="email" required>
      <button type="submit">Send</button>
 </form>
-    
+    <li><a href="https://64f686283e38133f8e1183ea--wonderful-swan-0c6557.netlify.app/">links</a></li>
   </div>
 </body>
 </template>
