@@ -1,6 +1,5 @@
 <script>
 import {setPageTitle, setPageMetaData} from '@/seo';
-
 export default {
   name: "HomeView",
   setup() {
@@ -14,7 +13,6 @@ export default {
   }
 }
 </script>
-
 <template>
   <body>
   <div class="hello">
@@ -33,13 +31,42 @@ export default {
     <h5 style = "color:brown">
     <br>CALL (520) 300-6340, nk@World-of-work-services-coop.com
     <br>Kay or Josh Harmon, 141 S. 6th Ave, Unit 42, Tucson, Az 85702 </h5>
-    <form action="https://formsubmit.co/joshua.harmon1960@gmail.com" method="POST">
-     <input type="text" name="name" required>
-     <input type="email" name="email" required>
-     <button type="submit">Send</button>
-</form>
-    <li><a href="https://64f686283e38133f8e1183ea--wonderful-swan-0c6557.netlify.app/">links</a></li>
+    <a href="https://64f686283e38133f8e1183ea--wonderful-swan-0c6557.netlify.app/" class="link_button2">links</a>
   </center>
   </div>
 </body>
 </template>
+<style>
+html {
+  background-color: #000;
+  margin-top: 2em;
+  margin-left: 2em;
+}
+.link_button2 {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: solid 1px #1A4575;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  background: #3A68A1;
+  color: #fee1cc;
+  text-decoration: none;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: larger;
+}
+a.link_button2:hover {
+  text-decoration: underline;
+  background: #4479BA;
+  border: solid 1px #20538D;
+  /*
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 1px 1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 1px 1px rgba(0, 0, 0, 0.4);
+  */
+}
+</style>
