@@ -37,11 +37,7 @@ export default {
 </body>
 </template>
 <style>
-html {
-  background-color: #000;
-  margin-top: 2em;
-  margin-left: 2em;
-}
+
 .link_button2 {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
