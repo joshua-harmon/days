@@ -30,9 +30,11 @@ export default {
     <br>Self-employment by becoming a working COOP member </h3>
     <h5 style = "color:brown">
     <br>CALL (520) 300-6340, nk@World-of-work-services-coop.com
-    <br>Kay or Josh Harmon, 141 S. 6th Ave, Unit 42, Tucson, Az 85702 </h5>
-    <a href="https://64f686283e38133f8e1183ea--wonderful-swan-0c6557.netlify.app/" class="link_button2">links</a>
-  </center>
+    <br>Kay or Josh Harmon, 141 S. 6th Ave, Unit 42, Tucson, Az 85702 </h5><br>
+    <a href="https://64f686283e38133f8e1183ea--wonderful-swan-0c6557.netlify.app/" class="link_button2">links</a><br>
+    <a href="https://form.jotform.com/232398357846168" class="link_button2">apply</a><br>
+    <a href="https://us21.list-manage.com/contact-form?u=c2c0f20a2043f1dd6472ffd6c&form_id=0bd25ece95a2940d5a4ca8ac7ed827c7" class="link_button2">send message</a><br>
+</center>
   </div>
 </body>
 </template>
